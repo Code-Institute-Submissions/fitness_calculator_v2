@@ -28,10 +28,15 @@ def yes_no(answer):
 
 def main():
     print("Welcome to fitness_calculator v3. this calculator can be used for bmi,calories,macros and fibre using industry standard calculations.\n")
+
     bmi_bool = yes_no("would you like to calculate your BMI and healthy weight range? y/n: \n")
     calorie_bool = yes_no("would you like to calculate your calories? y/n: \n")
     macro_bool = yes_no("would you like to calculate your macros? y/n: \n")
-    units = a_or_b("would you like to use lb or kg for measurements? type lb or kg: \n","lb","kg" )
+
+    if bmi_bool && calorie_bool && macro_bool = False:
+        # end_program()
+
+    units = a_or_b("would you like to use lb or kg for measurements? type lb or kg: \n","lb","kg" ) 
 
 
 
