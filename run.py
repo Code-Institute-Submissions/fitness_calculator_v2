@@ -37,13 +37,20 @@ def main():
     calorie_bool = yes_no("would you like to calculate your calories?")
     macro_bool = yes_no("would you like to calculate your macros?")
 
-    # if bmi_bool and calorie_bool and macro_bool is False:
-    #     # end_program()
+
 
     weight_units = a_or_b("would you like to use lb or kg for weight measurements?", [
                           "lb", "l"], ["kg", "k"])
     height_units = a_or_b("would you like to use lb or kg for height measurements?", [
                           "ft", "f"], ["cm", "c"])
-
+    # if (bmi_bool):
+    #     bmi_calculation_start()
+    # elif (calorie_bool):
+    #     calorie_calculation_start()
+    # elif (macro_bool):
+    #     macro_calculation_start()
+    # else:
+    #     end_program()
+        
 
 main()
