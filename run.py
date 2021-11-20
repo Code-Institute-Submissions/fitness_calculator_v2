@@ -16,6 +16,18 @@ def yes_no(answer):
     no = set(['no', 'n'])
     return a_or_b(answer, yes, no)
 
+def get_value(answer, x, y):
+    while True:
+        try:
+            value_answer = int(input(answer) in range(x, y))
+            return value_answer
+        except ValueError:
+            print("incorrect input. please try again")
+            
+
+
+def bmi_calculation_start():
+    
 
 def main():
     print("Welcome to fitness_calculator v3. this calculator can be used for bmi,calories,macros and fibre using industry standard calculations.\n")
