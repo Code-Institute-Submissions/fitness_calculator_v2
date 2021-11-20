@@ -1,5 +1,5 @@
 
-# Function for a Yes/No result based on the answer provided as an arguement
+# Function for a 2 option selection 
 def a_or_b(answer, a, b):
     while True:
         choice = input(answer).lower()
@@ -12,8 +12,8 @@ def a_or_b(answer, a, b):
 
 
 def yes_no(answer):
-    yes = set(['yes', 'y', 'ye'])
-    no = set(['no', 'n'])
+    yes = ['yes', 'y', 'ye']
+    no =  ['no', 'n']
     return a_or_b(answer, yes, no)
 
 def get_value(answer, x, y):
@@ -26,7 +26,7 @@ def get_value(answer, x, y):
             
 
 
-def bmi_calculation_start():
+# def bmi_calculation_start():
     
 
 def main():
@@ -39,7 +39,8 @@ def main():
     if bmi_bool and calorie_bool and macro_bool is False:
         # end_program()
 
-    units = a_or_b("would you like to use lb or kg for measurements? type lb or kg: \n", "lb", "kg")
+    weight_units = a_or_b("would you like to use lb or kg for weight measurements? type lb or kg: \n", "lb", "kg")
+    height_units = a_or_b("would you like to use lb or kg for height measurements? type ft or cm: \n", "ft", "cm")
 
 
 main()
