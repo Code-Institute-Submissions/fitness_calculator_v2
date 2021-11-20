@@ -17,16 +17,19 @@ def yes_no(answer):
     return a_or_b(answer, yes, no)
 
 
-def get_value(answer, x, y):
+def get_value(answer, low, high, unit):
     while True:
         try:
-            value_answer = int(input(answer) in range(x, y))
+            value_answer = int(input(f"{answer} in {unit}?\n") in range(low, high))
             return value_answer
         except ValueError:
             print("incorrect input. please try again")
 
 
-# def bmi_calculation_start():
+def bmi_calculation_start():
+    print("This BMI calculator will ask you a few simple questions and return your BMI and healthy weight range")
+    age = get_value("what is your age?: ", 18, 140)
+    height = get_value("what is your height",)
 
 
 def main():
