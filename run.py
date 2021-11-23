@@ -4,6 +4,7 @@ height_units = None
 bmi_bool = None
 calorie_bool = None
 macro_bool = None
+gender = None
 
 
 # Function for a 2 option selection
@@ -74,6 +75,26 @@ def bmi_calculation_start():
     else:
         print(f"Your bmi is {bmi}. this is considered very overweight")
 
+    if calorie_bool:
+        calorie_calculation_start()
+    elif not calorie_bool and macro_bool:
+        macro_calculation_start()
+    else:
+        #end_program()
+
+
+def calorie_calculation_start():
+    print("this calorie will ask you a few simple questions and return your recomended daily calorie intake.")
+    gender = a_or_b("are you male or female?", ["m", "male", "man", "ma", "mal"], ["f", "female", "femal", "fema", "fem", "fe"])
+
+    if gender = True:
+        bmr = 10 * weight_in_kg + 6.25 * height_in_cm -5 * age + 5
+    else:
+        bmr = 10 * weight_in_kg + 6.25 * height_in_cm -5 * age - 161
+    
+    print(f"your BMR (basal metabolic rate) is {bmr}\n this is an approximation of how many calories your body burns without any additional energy expenditure apart from breathing.")
+
+
 
 
 def main():
@@ -97,4 +118,7 @@ def main():
     #     macro_calculation_start()
     # else:
     #     end_program()
+
+
+
 main()
