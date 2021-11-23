@@ -1,5 +1,9 @@
+weight_units = None
+height_units = None
 
 # Function for a 2 option selection
+
+
 def a_or_b(answer, a, b):
     while True:
         choice = input(f"{answer} {a[0]}/{b[0]}: \n").lower()
@@ -18,13 +22,14 @@ def yes_no(answer):
 
 
 def get_value(answer, low, high):
-    input_str = input(f"{answer}\n")
-    input_int = int(input_str)
-    if input_int in range(low, high):
-        return input_int
-    else:
-        print(
-            f"invalid answer. please respond with a integer in the range {low} to {high}")
+    while True:
+        input_str = input(f"{answer}\n")
+        input_int = int(input_str)
+        if input_int in range(low, high):
+            return input_int
+        else:
+            print(
+                f"invalid answer. please respond with a integer in the range {low} to {high}")
 
 
 def bmi_calculation_start():
@@ -39,7 +44,7 @@ def bmi_calculation_start():
             "add inches to your current height: ", 0, 12)
     else:
         height_in_cm = get_value(
-            "what is your height in cm: ", 1, 9)
+            "what is your height in cm: ", 25, 275)
 
     if (weight_units):
         weight_in_lb = get_value(
