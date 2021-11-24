@@ -7,6 +7,8 @@ height_units = None
 bmi = None
 
 # Function for a 2 option selection
+
+
 def a_or_b(answer, a, b):
     while True:
         choice = input(f"{answer} {a[0]}/{b[0]}: \n").lower()
@@ -26,23 +28,30 @@ def yes_no(answer):
 
 def get_int_value(answer, low, high):
     while True:
-        input_str = input(f"{answer}\n")
-        input_int = int(input_str)
-        if input_int in range(low, high):
-            return input_int
-        else:
+        try:
+            input_int = int(input(f"{answer}\n"))
+            if input_int in range(low, high):
+                return input_int
+            else:
+                return ValueError
+        except ValueError:
             print(
                 f"invalid answer. please respond with a integer in the range {low} to {high}")
 
+
 def get_float_value(answer, low, high):
     while True:
-        input_str = input(f"{answer}\n")
-        input_float = float(input_str)
-        if input_float in range(low, high):
-            return input_float
-        else:
+        try:
+            input_float = float(input(f"{answer}\n"))
+            float_to_int = int(input_float * 10)
+            if float_to_int in range(low * 10, high * 10):
+                return input_float
+            else:
+                return ValueError
+        except ValueError:
             print(
                 f"invalid answer. please respond with a integer in the range {low} to {high}")
+
 
 def opener():
     print("Welcome to fitness_calculator v3. this calculator can be used for bmi,calories,macros and fibre using industry standard calculations.\n")
@@ -80,11 +89,11 @@ def bmi_calculation_start():
     if (weight_units):
         weight_in_lb = get_int_value(
             "what is your weight in lb?: ", 40, 600)
-        weight_in_kg = weight_in_lb * 0.45359237
     else:
         weight_in_kg = get_int_value(
             "what is your weight in kg?: ", 25, 300)
 
+    weight_in_kg = float(weight_in_lb * 0.45359237)
     global bmi
     bmi = (weight_in_kg / height_in_cm / height_in_cm) * 10000
     bmi = round(bmi, 1)
@@ -102,12 +111,12 @@ def bmi_calculation_start():
     else:
         print(f"Your bmi is {bmi}. this is considered very overweight\n")
 
-    if calorie_bool:
-        calorie_calculation_start()
-    elif not calorie_bool and macro_bool:
-        pass  # macro_calculation_start()
-    else:
-        pass  # end_program
+    # if calorie_bool:
+    #     calorie_calculation_start()
+    # elif not calorie_bool and macro_bool:
+    #     pass  # macro_calculation_start()
+    # else:
+    #     pass  # end_program
 
 
 def calorie_calculation_start():
@@ -137,7 +146,7 @@ def calorie_calculation_start():
     maintance_calories = bmr * activity_level
 
     print(
-        f"your calculated  daily calories to maintain your current weight is {maintance_calories}")
+        f"your calculated  daily calories to maintain your current weight is {round(maintance_calories)}")
 
 
 def main():
