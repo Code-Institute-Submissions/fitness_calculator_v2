@@ -1,5 +1,5 @@
 # Global Variables
-global weight_units 
+global weight_units
 global height_units
 global bmi_bool
 global calorie_bool
@@ -39,14 +39,13 @@ def get_value(answer, low, high):
 def bmi_calculation_start():
     print("This bmi calculator will ask you a few simple questions and return your bmi and healthy weight range")
 
-    age = get_value("what is your age?: ", 18, 140)
 
     if (height_units):
         height_in_ft = get_value(
             "(you will be asked to add inches in the next question) what is your height in ft?: ", 1, 9)
         height_in_ft_add_inches = get_value(
             "add inches to your current height: ", 0, 12)
-            global height_in_cm
+        global height_in_cm
         height_in_cm = ((height_in_ft * 12) + height_in_ft_add_inches) * 2.54
     else:
         height_in_cm = get_value(
@@ -80,15 +79,17 @@ def bmi_calculation_start():
     if calorie_bool:
         calorie_calculation_start()
     elif not calorie_bool and macro_bool:
-        pass #macro_calculation_start()
+        pass  # macro_calculation_start()
     else:
-        pass  #end_program
+        pass  # end_program
 
 
 def calorie_calculation_start():
     print("this calorie will ask you a few simple questions and return your recomended daily calorie intake.\n")
     gender = a_or_b("are you male or female?", ["m", "male", "man", "ma", "mal"], [
                     "f", "female", "femal", "fema", "fem", "fe"])
+
+    age = get_value("what is your age?: ", 18, 140)
 
     if gender:
         bmr = 10 * weight_in_kg + 6.25 * height_in_cm - 5 * age + 5
