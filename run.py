@@ -1,10 +1,3 @@
-# Global Variables
-global weight_units
-global height_units
-global bmi_bool
-global calorie_bool
-global macro_bool
-global gender
 
 
 # Function for a 2 option selection
@@ -36,9 +29,26 @@ def get_value(answer, low, high):
                 f"invalid answer. please respond with a integer in the range {low} to {high}")
 
 
+def opener():
+    print("Welcome to fitness_calculator v3. this calculator can be used for bmi,calories,macros and fibre using industry standard calculations.\n")
+    global bmi_bool
+    global calorie_bool
+    global macro_bool
+    global weight_units
+    global height_units
+    bmi_bool = yes_no(
+        "would you like to calculate your bmi and healthy weight range?")
+    calorie_bool = yes_no("would you like to calculate your calories?")
+    macro_bool = yes_no("would you like to calculate your macros?")
+
+    weight_units = a_or_b("would you like to use lb or kg for weight measurements?", [
+                          "lb", "l"], ["kg", "k"])
+    height_units = a_or_b("would you like to use ft or cm for height measurements?", [
+                          "ft", "f"], ["cm", "c"])
+
+
 def bmi_calculation_start():
     print("This bmi calculator will ask you a few simple questions and return your bmi and healthy weight range")
-
 
     if (height_units):
         height_in_ft = get_value(
@@ -114,17 +124,6 @@ def calorie_calculation_start():
 
 
 def main():
-    print("Welcome to fitness_calculator v3. this calculator can be used for bmi,calories,macros and fibre using industry standard calculations.\n")
-
-    bmi_bool = yes_no(
-        "would you like to calculate your bmi and healthy weight range?")
-    calorie_bool = yes_no("would you like to calculate your calories?")
-    macro_bool = yes_no("would you like to calculate your macros?")
-
-    weight_units = a_or_b("would you like to use lb or kg for weight measurements?", [
-                          "lb", "l"], ["kg", "k"])
-    height_units = a_or_b("would you like to use ft or cm for height measurements?", [
-                          "ft", "f"], ["cm", "c"])
 
     bmi_calculation_start()
     calorie_calculation_start()
