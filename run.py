@@ -1,4 +1,10 @@
-
+#global functuio
+bmi_bool = None
+calorie_bool = None
+macro_bool = None
+weight_units = None
+height_units = None
+bmi = None
 
 # Function for a 2 option selection
 def a_or_b(answer, a, b):
@@ -49,13 +55,14 @@ def opener():
 
 def bmi_calculation_start():
     print("This bmi calculator will ask you a few simple questions and return your bmi and healthy weight range")
+    global height_in_cm
+    global weight_in_kg
 
     if (height_units):
         height_in_ft = get_value(
             "(you will be asked to add inches in the next question) what is your height in ft?: ", 1, 9)
         height_in_ft_add_inches = get_value(
             "add inches to your current height: ", 0, 12)
-        global height_in_cm
         height_in_cm = ((height_in_ft * 12) + height_in_ft_add_inches) * 2.54
     else:
         height_in_cm = get_value(
@@ -64,12 +71,12 @@ def bmi_calculation_start():
     if (weight_units):
         weight_in_lb = get_value(
             "what is your weight in lb?: ", 40, 600)
-        global weight_in_kg
         weight_in_kg = weight_in_lb * 0.45359237
     else:
         weight_in_kg = get_value(
             "what is your weight in kg?: ", 25, 300)
 
+    global bmi
     bmi = (weight_in_kg / height_in_cm / height_in_cm) * 10000
     bmi = round(bmi, 1)
 
@@ -96,6 +103,7 @@ def bmi_calculation_start():
 
 def calorie_calculation_start():
     print("this calorie will ask you a few simple questions and return your recomended daily calorie intake.\n")
+
     gender = a_or_b("are you male or female?", ["m", "male", "man", "ma", "mal"], [
                     "f", "female", "femal", "fema", "fem", "fe"])
 
@@ -125,6 +133,7 @@ def calorie_calculation_start():
 
 def main():
 
+    opener()
     bmi_calculation_start()
     calorie_calculation_start()
     # if (bmi_bool):
