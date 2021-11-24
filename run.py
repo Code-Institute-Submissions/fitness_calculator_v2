@@ -24,7 +24,7 @@ def yes_no(answer):
     return a_or_b(answer, yes, no)
 
 
-def get_value(answer, low, high):
+def get_int_value(answer, low, high):
     while True:
         input_str = input(f"{answer}\n")
         input_int = int(input_str)
@@ -34,6 +34,15 @@ def get_value(answer, low, high):
             print(
                 f"invalid answer. please respond with a integer in the range {low} to {high}")
 
+def get_float_value(answer, low, high):
+    while True:
+        input_str = input(f"{answer}\n")
+        input_float = float(input_str)
+        if input_float in range(low, high):
+            return input_float
+        else:
+            print(
+                f"invalid answer. please respond with a integer in the range {low} to {high}")
 
 def opener():
     print("Welcome to fitness_calculator v3. this calculator can be used for bmi,calories,macros and fibre using industry standard calculations.\n")
@@ -54,26 +63,26 @@ def opener():
 
 
 def bmi_calculation_start():
-    print("This bmi calculator will ask you a few simple questions and return your bmi and healthy weight range")
+    print("This bmi calculator will ask you a few simple questions and return your bmi and healthy weight range\n")
     global height_in_cm
     global weight_in_kg
 
     if (height_units):
-        height_in_ft = get_value(
+        height_in_ft = get_int_value(
             "(you will be asked to add inches in the next question) what is your height in ft?: ", 1, 9)
-        height_in_ft_add_inches = get_value(
+        height_in_ft_add_inches = get_int_value(
             "add inches to your current height: ", 0, 12)
         height_in_cm = ((height_in_ft * 12) + height_in_ft_add_inches) * 2.54
     else:
-        height_in_cm = get_value(
+        height_in_cm = get_int_value(
             "what is your height in cm: ", 25, 275)
 
     if (weight_units):
-        weight_in_lb = get_value(
+        weight_in_lb = get_int_value(
             "what is your weight in lb?: ", 40, 600)
         weight_in_kg = weight_in_lb * 0.45359237
     else:
-        weight_in_kg = get_value(
+        weight_in_kg = get_int_value(
             "what is your weight in kg?: ", 25, 300)
 
     global bmi
@@ -102,12 +111,12 @@ def bmi_calculation_start():
 
 
 def calorie_calculation_start():
-    print("this calorie will ask you a few simple questions and return your recomended daily calorie intake.\n")
+    print("this calorie calculator will ask you a few simple questions and return your recomended daily calorie intake.\n")
 
     gender = a_or_b("are you male or female?", ["m", "male", "man", "ma", "mal"], [
                     "f", "female", "femal", "fema", "fem", "fe"])
 
-    age = get_value("what is your age?: ", 18, 140)
+    age = get_int_value("what is your age?: ", 18, 140)
 
     if gender:
         bmr = 10 * weight_in_kg + 6.25 * height_in_cm - 5 * age + 5
@@ -123,7 +132,7 @@ def calorie_calculation_start():
     Lightly Active + Training 3-6x/wk-----Works a desk job, takes pet for a walk most days in addition to lifting-----1.5 - 1.8\n
     Moderately Active + Training 3-6x/wk-----Works as a full-time waitress, occasionally plays tennis in addition tolifting-----1.8 - 2.0\n
     Highly Active + Training 3-6x/wk-----Works as a construction worker, regular hiking in addition to lifting-----2.0 - 2.2\n""")
-    activity_level = get_value(
+    activity_level = get_float_value(
         "what is your estimated activity level multiplier?: ", 1, 2)
     maintance_calories = bmr * activity_level
 
