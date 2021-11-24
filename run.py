@@ -1,4 +1,4 @@
-#global functuio
+# temporary global functions
 bmi_bool = None
 calorie_bool = None
 macro_bool = None
@@ -7,8 +7,6 @@ height_units = None
 bmi = None
 
 # Function for a 2 option selection
-
-
 def a_or_b(answer, a, b):
     while True:
         choice = input(f"{answer} {a[0]}/{b[0]}: \n").lower()
@@ -19,13 +17,13 @@ def a_or_b(answer, a, b):
         else:
             print(f"Please respond with {a[0]} or {b[0]}\n")
 
-
+# yes or no answer function
 def yes_no(answer):
     yes = ['yes', 'y', 'ye']
     no = ['no', 'n']
     return a_or_b(answer, yes, no)
 
-
+# get an integer from user
 def get_int_value(answer, low, high):
     while True:
         try:
@@ -38,7 +36,7 @@ def get_int_value(answer, low, high):
             print(
                 f"invalid answer. please respond with a integer in the range {low} to {high}")
 
-
+# get float value from user
 def get_float_value(answer, low, high):
     while True:
         try:
@@ -53,6 +51,7 @@ def get_float_value(answer, low, high):
                 f"invalid answer. please respond with a integer in the range {low} to {high}")
 
 
+# opening questions function to deter
 def opener():
     print("Welcome to fitness_calculator v3. this calculator can be used for bmi,calories,macros and fibre using industry standard calculations.\n")
     global bmi_bool
@@ -111,13 +110,6 @@ def bmi_calculation_start():
     else:
         print(f"Your bmi is {bmi}. this is considered very overweight\n")
 
-    # if calorie_bool:
-    #     calorie_calculation_start()
-    # elif not calorie_bool and macro_bool:
-    #     pass  # macro_calculation_start()
-    # else:
-    #     pass  # end_program
-
 
 def calorie_calculation_start():
     print("this calorie calculator will ask you a few simple questions and return your recomended daily calorie intake.\n")
@@ -148,20 +140,95 @@ def calorie_calculation_start():
     print(
         f"your calculated  daily calories to maintain your current weight is {round(maintance_calories)}")
 
+    training_experience = get_int_value(
+        """what is your level of training experience?
+    1.Beginner(0-2 years)------ 2.Intermediate(2-4 years)-----3.Advanced(4+ years)
+    pick 1,2 or 3: """, 1, 3)
+
+    user_goal = get_int_value(
+        """what is your primary goal?
+    1.Lose Weight(Cut)-----2.Maintain current weight-----3.Gain Weight(Bulk)
+    pick 1,2 or 3""", 1, 3)
+
+    if user_goal == 1:
+        change_cals_percentage = yes_no("""the default calorie deficit is 20% below maintance. We redomend this value for most
+        people unless your are an experienced lifter with an already low body fat %. would you like to change this percentage?""")
+
+        if change_cals_percentage:
+            cals_percentage = get_int_value(
+                "enter your preferred deficit %: ", 0, 75)
+        else:
+            cals_percentage = 20
+
+    elif user_goal == 2:
+        cals = maintance_calories
+        print(
+            f"to maintain your current weight you shoud use your maitaince calories which is {cals}")
+
+    else:
+        if training_experience == 1:
+            change_cals_percentage = yes_no("""the recomended calorie surplus for your experience level is 25% to maximise muscle building potential
+            in your early trainging career. would you like to change this percentage?"""
+
+            if change_cals_percentage:
+                cals_percentage=get_int_value(
+                    "enter your preferred surplus %: ", 0, 75)
+            else:
+                cals_percentage=25
+
+        if training_experience == 2:
+            change_cals_percentage=yes_no("""the recomended calorie surplus for your experience level is 20% to maximise muscle building potential
+            . would you like to change this percentage?"""
+            if change_cals_percentage:
+                cals_percentage=get_int_value(
+                    "enter your preferred surplus %: ", 0, 75)
+            else:
+                cals_percentage=20
+
+        else:
+            change_cals_percentage=yes_no("""the recomended calorie surplus for your experience level is 15% to maximise muscle building potential
+            . would you like to change this percentage?"""
+            if change_cals_percentage:
+                cals_percentage=get_int_value(
+                    "enter your preferred surplus %: ", 0, 75)
+            else:
+                cals_percentage=15
+
+
+    cal_multiplier=(cals_percentage / 100) + 1
+    cals=maintance_calories * cal_multiplier
+    print(f"your recomended daily calorie intake is {cals}")
+
+
+
+
+
+
 
 def main():
 
     opener()
     bmi_calculation_start()
     calorie_calculation_start()
-    # if (bmi_bool):
+
+    # if bmi_bool and calorie_bool and macro_bool:
     #     bmi_calculation_start()
-    # elif (calorie_bool):
     #     calorie_calculation_start()
-    # elif (macro_bool):
     #     macro_calculation_start()
-    # else:
     #     end_program()
+    # elif bmi_bool and calorie_bool:
+    #     pass
+    # elif bmi_bool and macro_bool:
+    #     pass
+    # elif macro_bool
+    #     pass
+    # elif calorie_bool and macro_bool:
+    #     pass
+    # elif calorie_bool:
+    #     pass
+    # elif macro_bool:
+    #     pass
+    # else:
 
 
 main()
