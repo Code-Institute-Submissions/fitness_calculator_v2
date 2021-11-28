@@ -35,18 +35,27 @@ def yes_no(answer):
 
     return a_or_b(answer, yes, no)
 
-# get an integer from user
 def get_int_value(answer, low, high):
+    """
+    gets an int value input from the user within a defined low and high range.
+    """
+
     while True:
+
         try:
-            input_int = int(input(f"{answer}\n"))
-            if input_int in range(low, high):
+            input_int = int(input(f"\n{answer}\n"))
+
+            if input_int in range(low, high + 1):
+
                 return input_int
+
             else:
+
                 return ValueError
+
         except ValueError:
             print(
-                f"invalid answer. please respond with a integer in the range {low} to {high}")
+                f"\ninvalid answer. please respond with a integer in the range {low} to {high}")
 
 # get float value from user
 def get_float_value(answer, low, high):
