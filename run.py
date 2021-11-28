@@ -217,7 +217,7 @@ def print_bmi_opener():
 def calorie_calculation_start(height, weight, gender, age):
     """
     calorie calculation function.
-    contains functions to calculate bmr,maintance calories, and surplus/deficit percentage.
+    contains functions to calculate bmr,maintenance calories, and surplus/deficit percentage.
     contains functions to get user activity level, user  goals and triaining experience.
     returns recommended calories from the last calorie calculation function which takes the user values from the prior functions.
     """
@@ -259,17 +259,17 @@ def calorie_calculation_start(height, weight, gender, age):
 
         return activity_level
 
-    def calculate_maintance(bmr, activity_level):
+    def calculate_maintenance(bmr, activity_level):
         """
-        calculates the users maintance calories from  bmr and activity level.
+        calculates the users maintenance calories from  bmr and activity level.
         """
 
-        maintance_calories = bmr * activity_level
+        maintenance_calories = bmr * activity_level
         gap()
         print(
-            f"your calculated  daily calories to maintain your current weight is {round(maintance_calories)}")
+            f"your calculated  daily calories to maintain your current weight is {round(maintenance_calories)}")
 
-        return maintance_calories
+        return maintenance_calories
 
     def get_training_experience():
         """"
@@ -295,12 +295,12 @@ def calorie_calculation_start(height, weight, gender, age):
 
         return user_goal
 
-    def deficit_percentage_calculation(maintance_calories):
+    def deficit_percentage_calculation(maintenance_calories):
         """
         calculates the percentage calorie deficit.
         ask the user if they want to use the suggested value or adjust it themselves.
         """
-        change_cals_percentage = yes_no("""the default calorie deficit is 20% below maintance. We redomend this value for most people unless your are an experienced lifter with an already low body fat %. would you like to change this percentage?\n""")
+        change_cals_percentage = yes_no("""the default calorie deficit is 20% below maintenance. We redomend this value for most people unless your are an experienced lifter with an already low body fat %. would you like to change this percentage?\n""")
 
         if change_cals_percentage:
             defecit = get_int_value(
@@ -308,11 +308,11 @@ def calorie_calculation_start(height, weight, gender, age):
         else:
             defecit = 20
 
-        defecit_cals = maintance_calories * float(defecit) / 100
+        defecit_cals = maintenance_calories * float(defecit) / 100
 
         return defecit_cals
 
-    def surplus_percentage_calculation(training_experience, maintance_calories):
+    def surplus_percentage_calculation(training_experience, maintenance_calories):
         """
         calculates the percentage calorie surplus. ask the user if they want to use the suggested value based on training experience or adjust it themselves.
         """
@@ -344,29 +344,29 @@ def calorie_calculation_start(height, weight, gender, age):
             else:
                 surplus = 15
 
-        surplus_cals = maintance_calories * float(surplus) / 100
+        surplus_cals = maintenance_calories * float(surplus) / 100
 
         return surplus_cals
 
-    def calculate_cals(user_goal, maintance_calories, training_exp):
+    def calculate_cals(user_goal, maintenance_calories, training_exp):
         """
         calculate recomended daily caloric intake.
-        maintance calories + % surplus or deficit.
+        maintenance calories + % surplus or deficit.
         """
 
         if user_goal == 1:
             defecit_calories = deficit_percentage_calculation(
-                maintance_calories)
-            calories = maintance_calories - defecit_calories
+                maintenance_calories)
+            calories = maintenance_calories - defecit_calories
 
         elif user_goal == 2:
 
-            calories = maintance_calories
+            calories = maintenance_calories
 
         else:
             surplus_calories = surplus_percentage_calculation(
-                training_exp, maintance_calories)
-            calories = maintance_calories + surplus_calories
+                training_exp, maintenance_calories)
+            calories = maintenance_calories + surplus_calories
 
         return calories
 
@@ -375,7 +375,7 @@ def calorie_calculation_start(height, weight, gender, age):
 
     activity_level = get_activity_level()
 
-    maintance_calories = calculate_maintance(bmr, activity_level)
+    maintenance_calories = calculate_maintenance(bmr, activity_level)
 
     user_goal = get_user_goal()
 
@@ -383,7 +383,7 @@ def calorie_calculation_start(height, weight, gender, age):
 
     global cals
 
-    cals = calculate_cals(user_goal, maintance_calories, training_exp)
+    cals = calculate_cals(user_goal, maintenance_calories, training_exp)
 
     user_cals_msg = f"your recomended daily caloric intake is {round(cals)}cal"
 
