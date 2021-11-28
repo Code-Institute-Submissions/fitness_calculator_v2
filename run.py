@@ -25,6 +25,7 @@ def a_or_b(answer, a, b):
         else:
             print(f"\nPlease respond with {a[0]} or {b[0]}\n")
 
+
 def yes_no(answer):
     """
     function to get a yes or no answer from the user.
@@ -34,6 +35,7 @@ def yes_no(answer):
     no = ['no', 'n']
 
     return a_or_b(answer, yes, no)
+
 
 def get_int_value(answer, low, high):
     """
@@ -57,6 +59,7 @@ def get_int_value(answer, low, high):
             print(
                 f"\ninvalid answer. please respond with a integer in the range {low} to {high}")
 
+
 def get_float_value(answer, low, high):
     """
     gets a float value input from the user within a defined low and high range.
@@ -79,6 +82,7 @@ def get_float_value(answer, low, high):
         except ValueError:
             print(
                 f"\ninvalid answer. please respond with a integer in the range {low} to {high}")
+
 
 def get_height_and_weight_value(height_units, weight_units):
     """
@@ -111,6 +115,18 @@ def get_height_and_weight_value(height_units, weight_units):
     h_w = [height_in_cm, weight_in_kg]
 
     return h_w
+
+
+def get_gender():
+    """
+    gets a gender value from the user.
+    """
+    global gender
+    gender = a_or_b("are you male or female?", ["m", "male", "man", "ma", "mal"], [
+        "f", "female", "femal", "fema", "fem", "fe"])
+
+    return gender
+
 
 # opening questions function to deter
 def opener():
