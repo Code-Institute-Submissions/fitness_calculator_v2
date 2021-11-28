@@ -1,10 +1,9 @@
-# temporary global functions
-bmi_bool = None
-calorie_bool = None
-macro_bool = None
-weight_units = None
-height_units = None
-bmi = None
+from tabulate import TableFormat, tabulate
+
+# global variables
+h_w = "run"
+gender = "run"
+cals = "run"
 
 def a_or_b(answer, a, b):
     """
