@@ -146,25 +146,34 @@ def gap():
     print('                                         ')
 
 
-    
-# opening questions function to deter
+
 def opener():
-    print("Welcome to fitness_calculator v3. this calculator can be used for bmi,calories,macros and fibre using industry standard calculations.\n")
-    global bmi_bool
-    global calorie_bool
-    global macro_bool
-    global weight_units
-    global height_units
+    """
+    opening statement and questions of the program.
+    prints a welcome message and then asks which parts of the program the user would like to use.
+    asks which height and weight units the user would like to input there values in.
+    returns answer values in a dict.
+    """
+    gap()
+    print("Welcome to fitness_calculator. this calculator can be used for bmi,calories,macros and fibre using industry standard calculations.\n")
+
     bmi_bool = yes_no(
         "would you like to calculate your bmi and healthy weight range?")
     calorie_bool = yes_no("would you like to calculate your calories?")
     macro_bool = yes_no("would you like to calculate your macros?")
-
     weight_units = a_or_b("would you like to use lb or kg for weight measurements?", [
-                          "lb", "l"], ["kg", "k"])
+        "lb", "l"], ["kg", "k"])
     height_units = a_or_b("would you like to use ft or cm for height measurements?", [
-                          "ft", "f"], ["cm", "c"])
+        "ft", "f"], ["cm", "c"])
 
+    opening_answers_dict = {
+        "bmi": bmi_bool,
+        "calorie": calorie_bool,
+        "macro": macro_bool,
+        "h_w_units": [height_units, weight_units]
+    }
+
+    return opening_answers_dict
 
 def bmi_calculation_start():
     print("This bmi calculator will ask you a few simple questions and return your bmi and healthy weight range\n")
