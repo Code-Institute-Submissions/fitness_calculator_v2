@@ -57,19 +57,28 @@ def get_int_value(answer, low, high):
             print(
                 f"\ninvalid answer. please respond with a integer in the range {low} to {high}")
 
-# get float value from user
 def get_float_value(answer, low, high):
+    """
+    gets a float value input from the user within a defined low and high range.
+    """
+
     while True:
+
         try:
-            input_float = float(input(f"{answer}\n"))
+            input_float = float(input(f"\n{answer}\n"))
             float_to_int = int(input_float * 10)
-            if float_to_int in range(low * 10, high * 10):
+
+            if float_to_int in range(low * 10, high * 10 + 1):
+
                 return input_float
+
             else:
+
                 return ValueError
+
         except ValueError:
             print(
-                f"invalid answer. please respond with a integer in the range {low} to {high}")
+                f"\ninvalid answer. please respond with a integer in the range {low} to {high}")
 
 
 # opening questions function to deter
