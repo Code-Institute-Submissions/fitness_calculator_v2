@@ -244,15 +244,13 @@ def calorie_calculation_start(height, weight, gender, age):
         gets the users activity levels.
         """
         gap()
-        table = [["Sedentary + Training 3-6x/wk", "Works a desk job  very little activity outside of lifting", "1.2 - 1.5"],
-                 ["Lightly Active + Training 3-6x/wk",
-                     "Works a desk job, takes pet for a walk most days in addition to lifting", "1.5 - 1.8"],
-                 ["Moderately Active + Training 3-6x/wk",
-                     "Works as a full-time waitress, occasionally plays tennis in addition tolifting", "1.8 - 2.0"],
-                 ["Highly Active + Training 3-6x/wk", "Works as a construction worker, regular hiking in addition to lifting", "2.0 - 2.2"]]
+        table = [["Sedentary + Training 3-6x/wk", "1.2 - 1.5"],
+                 ["Lightly Active + Training 3-6x/wk", "1.5 - 1.8"],
+                 ["Moderately Active + Training 3-6x/wk", "1.8 - 2.0"],
+                 ["Highly Active + Training 3-6x/wk", "2.0 - 2.2"]]
 
         print(tabulate(table, headers=[
-              "LIFESTYLE & TRAINING FREQUENCY", "EXAMPLE", "ACTIVITY MULTIPLIER"]))
+              "LIFESTYLE & TRAINING FREQUENCY", "ACTIVITY MULTIPLIER"]))
 
         activity_level = get_float_value(
             "what is your estimated activity level multiplier?: ", 1, 2)
@@ -300,7 +298,8 @@ def calorie_calculation_start(height, weight, gender, age):
         calculates the percentage calorie deficit.
         ask the user if they want to use the suggested value or adjust it themselves.
         """
-        change_cals_percentage = yes_no("""the default calorie deficit is 20% below maintenance. We redomend this value for most people unless your are an experienced lifter with an already low body fat %. would you like to change this percentage?\n""")
+        change_cals_percentage = yes_no(
+            """the default calorie deficit is 20% below maintenance. We redomend this value for most people unless your are an experienced lifter with an already low body fat %. would you like to change this percentage?\n""")
 
         if change_cals_percentage:
             defecit = get_int_value(
@@ -317,7 +316,8 @@ def calorie_calculation_start(height, weight, gender, age):
         calculates the percentage calorie surplus. ask the user if they want to use the suggested value based on training experience or adjust it themselves.
         """
         if training_experience == 1:
-            change_cals_percentage = yes_no("""the recomended calorie surplus for your experience level is 25% to maximise muscle building potential in your early trainging career. would you like to change this percentage?""")
+            change_cals_percentage = yes_no(
+                """the recomended calorie surplus for your experience level is 25% to maximise muscle building potential in your early trainging career. would you like to change this percentage?""")
 
             if change_cals_percentage:
                 surplus = get_int_value(
@@ -326,7 +326,8 @@ def calorie_calculation_start(height, weight, gender, age):
                 surplus = 25
 
         if training_experience == 2:
-            change_cals_percentage = yes_no("""the recomended calorie surplus for your experience level is 20% to maximise muscle building potential. would you like to change this percentage?""")
+            change_cals_percentage = yes_no(
+                """the recomended calorie surplus for your experience level is 20% to maximise muscle building potential. would you like to change this percentage?""")
 
             if change_cals_percentage:
                 surplus = get_int_value(
@@ -335,7 +336,8 @@ def calorie_calculation_start(height, weight, gender, age):
                 surplus = 20
 
         else:
-            change_cals_percentage = yes_no("""the recomended calorie surplus for your experience level is 15% to maximise muscle building potential. would you like to change this percentage?""")
+            change_cals_percentage = yes_no(
+                """the recomended calorie surplus for your experience level is 15% to maximise muscle building potential. would you like to change this percentage?""")
 
             if change_cals_percentage:
                 surplus = get_int_value(
