@@ -530,31 +530,8 @@ def macro_calculation_start(gender, weight_in_kg):
 
     return user_macro_msg
 
-    
+
 def main():
-
-    opener()
-    bmi_calculation_start()
-    calorie_calculation_start()
-
-    # if bmi_bool and calorie_bool and macro_bool:
-    #     bmi_calculation_start()
-    #     calorie_calculation_start()
-    #     macro_calculation_start()
-    #     end_program()
-    # elif bmi_bool and calorie_bool:
-    #     pass
-    # elif bmi_bool and macro_bool:
-    #     pass
-    # elif macro_bool
-    #     pass
-    # elif calorie_bool and macro_bool:
-    #     pass
-    # elif calorie_bool:
-    #     pass
-    # elif macro_bool:
-    #     pass
-    # else:
 
 
 main()
