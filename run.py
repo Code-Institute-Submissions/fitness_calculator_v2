@@ -175,45 +175,44 @@ def opener():
 
     return opening_answers_dict
 
-def bmi_calculation_start():
-    print("This bmi calculator will ask you a few simple questions and return your bmi and healthy weight range\n")
-    global height_in_cm
-    global weight_in_kg
 
-    if (height_units):
-        height_in_ft = get_int_value(
-            "(you will be asked to add inches in the next question) what is your height in ft?: ", 1, 9)
-        height_in_ft_add_inches = get_int_value(
-            "add inches to your current height: ", 0, 12)
-        height_in_cm = ((height_in_ft * 12) + height_in_ft_add_inches) * 2.54
-    else:
-        height_in_cm = get_int_value(
-            "what is your height in cm: ", 25, 275)
+def calculate_bmi(weight, height):
+    """
+    calculates the users bmi from the height and weight values.
+    based on the range of the bmi value returns the category and value to the user.
+    """
 
-    if (weight_units):
-        weight_in_lb = get_int_value(
-            "what is your weight in lb?: ", 40, 600)
-    else:
-        weight_in_kg = get_int_value(
-            "what is your weight in kg?: ", 25, 300)
-
-    weight_in_kg = float(weight_in_lb * 0.45359237)
-    global bmi
-    bmi = (weight_in_kg / height_in_cm / height_in_cm) * 10000
+    bmi = (weight / height / height) * 1000
     bmi = round(bmi, 1)
 
+    if(bmi <= 16):
+        bmi_msg = f"Your bmi is {bmi}. this is considered very underweight\n"
+
+    elif(bmi <= 18.5):
+        bmi_msg = f"Your bmi is {bmi}. this is considered underweight\n"
+
+    elif(bmi <= 25):
+        bmi_msg = f"Your bmi is {bmi}. this is considered Healthy\n"
+
+    elif(bmi <= 30):
+        bmi_msg = f"Your bmi is {bmi}. this is considered overweight\n"
+
+    else:
+        bmi_msg = f"Your bmi is {bmi}. this is considered very overweight\n"
+
+    print(f"\n{bmi_msg}")
+
+    return bmi_msg
+
+
+def print_bmi_opener():
+    """
+    prints the opening statement of the bmi calculator.
+    """
+    gap()
+    print("This bmi calculator will ask you a few simple questions and return your bmi and healthy weight range\n")
     print("""this bmi value is not to be taken as an exact science and is only an approxmation of your healthy weight range.
     if you are concerned about the value you receive consult a medical professional for further steps.\n""")
-    if(bmi <= 16):
-        print(f"Your bmi is {bmi}. this is considered very underweight\n")
-    elif(bmi <= 18.5):
-        print(f"Your bmi is {bmi}.this is considered underweight\n")
-    elif(bmi <= 25):
-        print(f"Your bmi is {bmi}. this is considered Healthy\n")
-    elif(bmi <= 30):
-        print(f"Your bmi is {bmi}. this is considered overweight\n")
-    else:
-        print(f"Your bmi is {bmi}. this is considered very overweight\n")
 
 
 def calorie_calculation_start():
