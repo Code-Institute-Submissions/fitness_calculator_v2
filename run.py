@@ -568,6 +568,32 @@ def run_calorie(run, h_w_units):
         return user_cals_msg
 
 
+def run_macro(run, h_w_units):
+    """
+    sets gender,cals and height and width if it has not been asked already.
+    runs macro calcualtion and returns the result in a string.
+    """
+    global gender
+    global cals
+    global h_w
+    if (run):
+
+        print("this macro calculator will ask you a few simple questions and return your recomended daily macro intake.\n")
+
+        if gender == "run":
+            gender = get_gender()
+
+        if h_w == "run":
+            h_w = get_height_and_weight_value(h_w_units[0], h_w_units[1])
+
+        if cals == "run":
+            cals = get_int_value(
+                "what is your daily calorie intake?: ", 1000, 8000)
+
+        user_macro_msg = macro_calculation_start(gender, h_w[1])
+        gap()
+
+        return user_macro_msg
 
 
 def main():
