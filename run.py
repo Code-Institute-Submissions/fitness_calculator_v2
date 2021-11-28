@@ -80,6 +80,37 @@ def get_float_value(answer, low, high):
             print(
                 f"\ninvalid answer. please respond with a integer in the range {low} to {high}")
 
+def get_height_and_weight_value(height_units, weight_units):
+    """
+    gets height and weight value input from the user.
+    uses the user defined height and weight units.
+    returns values in a dict for clear access in other functions.
+    """
+
+    if (height_units):
+        height_in_ft = get_int_value(
+            "(you will be asked to add inches in the next question) what is your height in ft?: ", 1, 9)
+        height_in_ft_add_inches = get_int_value(
+            "add inches to your current height: ", 0, 12)
+        height_in_cm = ((height_in_ft * 12) + height_in_ft_add_inches) * 2.54
+
+    else:
+        height_in_cm = get_int_value(
+            "what is your height in cm?: ", 25, 275)
+
+    if (weight_units):
+        weight_in_lb = get_int_value(
+            "what is your weight in lb?: ", 40, 600)
+        weight_in_kg = float(weight_in_lb * 0.45359237)
+
+    else:
+        weight_in_kg = get_int_value(
+            "what is your weight in kg?: ", 25, 300)
+
+    global h_w
+    h_w = [height_in_cm, weight_in_kg]
+
+    return h_w
 
 # opening questions function to deter
 def opener():
