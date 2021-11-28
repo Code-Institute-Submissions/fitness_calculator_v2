@@ -127,6 +127,7 @@ def get_gender():
 
     return gender
 
+
 def get_age():
     """
     gets an age value from the user in a predefined range.
@@ -134,8 +135,18 @@ def get_age():
     age = get_int_value("what is your age?: ", 18, 140)
 
     return age
-    
 
+
+def gap():
+    """
+    prints a line gap.
+    """
+    print('                                         ')
+    print('-----------------------------------------')
+    print('                                         ')
+
+
+    
 # opening questions function to deter
 def opener():
     print("Welcome to fitness_calculator v3. this calculator can be used for bmi,calories,macros and fibre using industry standard calculations.\n")
