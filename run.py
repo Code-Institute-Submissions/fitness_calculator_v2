@@ -91,7 +91,7 @@ def get_height_and_weight_value(height_units, weight_units):
     returns values in a dict for clear access in other functions.
     """
 
-    if (height_units):
+    if height_units:
         height_in_ft = get_int_value(
             "(you will be asked to add inches in the next question) what is your height in ft?: ", 1, 9)
         height_in_ft_add_inches = get_int_value(
@@ -300,8 +300,7 @@ def calorie_calculation_start(height, weight, gender, age):
         calculates the percentage calorie deficit.
         ask the user if they want to use the suggested value or adjust it themselves.
         """
-        change_cals_percentage = yes_no("""the default calorie deficit is 20% below maintance. We redomend this value for most
-        people unless your are an experienced lifter with an already low body fat %. would you like to change this percentage?""")
+        change_cals_percentage = yes_no("""the default calorie deficit is 20% below maintance. We redomend this value for most people unless your are an experienced lifter with an already low body fat %. would you like to change this percentage?\n""")
 
         if change_cals_percentage:
             defecit = get_int_value(
@@ -315,13 +314,10 @@ def calorie_calculation_start(height, weight, gender, age):
 
     def surplus_percentage_calculation(training_experience, maintance_calories):
         """
-        calculates the percentage calorie surplus.
-        ask the user if they want to use the suggested value based on training experience
-        or adjust it themselves.
+        calculates the percentage calorie surplus. ask the user if they want to use the suggested value based on training experience or adjust it themselves.
         """
         if training_experience == 1:
-            change_cals_percentage = yes_no("""the recomended calorie surplus for your experience level is 25% to maximise muscle building potential
-            in your early trainging career. would you like to change this percentage?""")
+            change_cals_percentage = yes_no("""the recomended calorie surplus for your experience level is 25% to maximise muscle building potential in your early trainging career. would you like to change this percentage?""")
 
             if change_cals_percentage:
                 surplus = get_int_value(
@@ -330,8 +326,7 @@ def calorie_calculation_start(height, weight, gender, age):
                 surplus = 25
 
         if training_experience == 2:
-            change_cals_percentage = yes_no("""the recomended calorie surplus for your experience level is 20% to maximise muscle building potential
-            . would you like to change this percentage?""")
+            change_cals_percentage = yes_no("""the recomended calorie surplus for your experience level is 20% to maximise muscle building potential. would you like to change this percentage?""")
 
             if change_cals_percentage:
                 surplus = get_int_value(
@@ -340,8 +335,7 @@ def calorie_calculation_start(height, weight, gender, age):
                 surplus = 20
 
         else:
-            change_cals_percentage = yes_no("""the recomended calorie surplus for your experience level is 15% to maximise muscle building potential
-            . would you like to change this percentage?""")
+            change_cals_percentage = yes_no("""the recomended calorie surplus for your experience level is 15% to maximise muscle building potential. would you like to change this percentage?""")
 
             if change_cals_percentage:
                 surplus = get_int_value(
@@ -408,8 +402,7 @@ def macro_calculation_start():
         """
         gets the user to input rough bodyfat percentage in int form.
         """
-        print("""please enter your bodyfat percentage.
-        this does not have to be exact and an estimation will do.
+        print("""please enter your bodyfat percentage. this does not have to be exact and an estimation will do.
         """)
 
         bodyfat_percentage = get_int_value(
@@ -431,8 +424,7 @@ def macro_calculation_start():
 
     def calculate_protein(bf, lbm):
         """
-        calculates daily protein intake.
-        takes bf, lbm and gender and determines what protein percentage of total cals should be applied.
+        calculates daily protein intake. takes bf, lbm and gender and determines what protein percentage of total cals should be applied.
         """
         protein_multiplier = 1.6
         global gender
@@ -464,8 +456,7 @@ def macro_calculation_start():
 
     def calculate_fat(bf):
         """
-        calculates daily fat intake.
-        takes bf and determines what fat percentage of total cals should be applied.
+        calculates daily fat intake. takes bf and determines what fat percentage of total cals should be applied.
         """
 
         global gender
@@ -500,8 +491,7 @@ def macro_calculation_start():
 
     def calculate_carbs(daily_protein, daily_fats):
         """
-        calculates carbs by subtracting protein/fat cals from total cals 
-        carbs is remainder
+        calculates carbs by subtracting protein/fat cals from total cals carbs is remainder
         """
         global cals
         remaining_cals = cals - ((daily_protein * 4) + (daily_fats * 9))
@@ -549,7 +539,7 @@ def run_bmi(run, h_w_units):
 
 def run_calorie(run, h_w_units):
     """
-    prints the  calorie opening string, gets the height and weight of the user if needed  and returns users calorie value,height weight values, age and gender to be reused.
+    prints the  calorie opening string, gets the height and weight of the user if needed  and returns users calorie value height weight values, age and gender to be reused.
     """
     global h_w
     if (run):
@@ -590,7 +580,7 @@ def run_macro(run, h_w_units):
             cals = get_int_value(
                 "what is your daily calorie intake?: ", 1000, 8000)
 
-        user_macro_msg = macro_calculation_start(gender, h_w[1])
+        user_macro_msg = macro_calculation_start()
         gap()
 
         return user_macro_msg
