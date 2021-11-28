@@ -547,6 +547,27 @@ def run_bmi(run, h_w_units):
 
         return user_bmi_msg
 
+def run_calorie(run, h_w_units):
+    """
+    prints the  calorie opening string, gets the height and weight of the user if needed  and returns users calorie value,height weight values, age and gender to be reused.
+    """
+    global h_w
+    if (run):
+
+        print("this calorie calculator will ask you a few simple questions and return your recomended daily calorie intake.\n")
+
+        if h_w == "run":
+            h_w = get_height_and_weight_value(h_w_units[0], h_w_units[1])
+
+        age = get_age()
+        gender = get_gender()
+
+        user_cals_msg = calorie_calculation_start(h_w[0], h_w[1], gender, age)
+        gap()
+
+        return user_cals_msg
+
+
 
 
 def main():
