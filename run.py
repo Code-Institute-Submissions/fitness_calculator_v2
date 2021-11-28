@@ -6,16 +6,24 @@ weight_units = None
 height_units = None
 bmi = None
 
-# Function for a 2 option selection
 def a_or_b(answer, a, b):
+    """
+    gets option a or b from user.
+    checks to see if the input is in the list of acceptable answers for either option.
+    returns True or False if option a or b is picked.
+    """
+
     while True:
-        choice = input(f"{answer} {a[0]}/{b[0]}: \n").lower()
+        choice = input(f"\n{answer} {a[0]} / {b[0]}: \n").lower()
+
         if choice in a:
             return True
+
         elif choice in b:
             return False
+
         else:
-            print(f"Please respond with {a[0]} or {b[0]}\n")
+            print(f"\nPlease respond with {a[0]} or {b[0]}\n")
 
 # yes or no answer function
 def yes_no(answer):
