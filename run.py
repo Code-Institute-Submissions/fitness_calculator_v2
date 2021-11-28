@@ -400,7 +400,137 @@ def calorie_calculation_start(height, weight, gender, age):
     return user_cals_msg
 
 
+def macro_calculation_start(gender, weight_in_kg):
+    """
+    calculates the values of daily intake for protein,carbs and fats using multiple functions to ask the user for values and calculate the % of the total diet each macro should be.
+    """
 
+    def get_bodyfat_percentage():
+        """
+        gets the user to input rough bodyfat percentage in int form.
+        """
+        print("""please enter your bodyfat percentage.
+        this does not have to be exact and an estimation will do.
+        """)
+
+        bodyfat_percentage = get_int_value(
+            "please enter your bodyfat percentage: ", 4, 60)
+
+        return bodyfat_percentage
+
+    def calculate_lbm(bf):
+        """
+        calculates lean body mass(lbm).
+        using weight and bodyfat percentage
+        """
+        global h_w
+        weight_lb = h_w[1] * 2.2046
+        fatmass = weight_lb * (bf / 100)
+        lbm = weight_lb - fatmass
+
+        return lbm
+
+    def calculate_protein(bf, lbm):
+        """
+        calculates daily protein intake.
+        takes bf, lbm and gender and determines what protein percentage of total cals should be applied.
+        """
+        protein_multiplier = 1.6
+        global gender
+        if gender:
+
+            if bf > 5:
+                percent_above_5 = bf - 5
+
+                for i in range(percent_above_5):
+                    protein_multiplier -= 0.016
+
+                    if protein_multiplier <= 1.2:
+                        pass
+
+        else:
+
+            if bf < 8:
+                percent_above_8 = bf - 8
+
+                for i in range(percent_above_8):
+                    protein_multiplier -= 0.0125
+
+                    if protein_multiplier <= 1.2:
+                        pass
+
+        daily_protein = lbm * protein_multiplier
+
+        return daily_protein
+
+    def calculate_fat(bf):
+        """
+        calculates daily fat intake.
+        takes bf and determines what fat percentage of total cals should be applied.
+        """
+
+        global gender
+        global cals
+        fat_percent = 20
+        if gender:
+
+            if bf > 5:
+                percent_above_5 = bf - 5
+
+                for i in range(percent_above_5):
+                    fat_percent += 0.75
+
+                    if fat_percent >= 35:
+                        pass
+
+        else:
+
+            if bf > 10:
+                percent_above_10 = bf - 10
+
+                for i in range(percent_above_10):
+                    fat_percent += 0.5
+
+                    if fat_percent >= 35:
+                        pass
+
+        fat_multiplier = fat_percent / 100
+        fats = (cals * fat_multiplier) / 9
+
+        return fats
+
+    def calculate_carbs(daily_protein, daily_fats):
+        """
+        calculates carbs by subtracting protein/fat cals from total cals 
+        carbs is remainder
+        """
+        global cals
+        remaining_cals = cals - ((daily_protein * 4) + (daily_fats * 9))
+        daily_carbs = remaining_cals / 4
+
+        return daily_carbs
+
+    # chain of variables and functions to determine final macro values
+
+    user_bf = get_bodyfat_percentage()
+
+    lbm = calculate_lbm(user_bf)
+
+    daily_protein = calculate_protein(user_bf, lbm)
+
+    daily_fats = calculate_fat(user_bf)
+
+    daily_carbs = calculate_carbs(daily_protein, daily_fats)
+
+    macros = f"{round(daily_protein)}G protein {round(daily_fats)}G Fat {round(daily_carbs)}G Carbs"
+    user_macro_msg = f"your daily macro intake is {macros}"
+    gap()
+    print(user_macro_msg)
+    gap()
+
+    return user_macro_msg
+
+    
 def main():
 
     opener()
