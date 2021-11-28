@@ -127,6 +127,14 @@ def get_gender():
 
     return gender
 
+def get_age():
+    """
+    gets an age value from the user in a predefined range.
+    """
+    age = get_int_value("what is your age?: ", 18, 140)
+
+    return age
+    
 
 # opening questions function to deter
 def opener():
