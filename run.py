@@ -595,6 +595,17 @@ def run_macro(run, h_w_units):
         return user_macro_msg
 
 
+def end_program(*results):
+    gap()
+
+    for result in results:
+        print(result)
+
+        gap()
+    print("Thank you for using my program. remember these values are only an estimation to be used with your own personal experience.")
+
+
+    
 def main():
 
 
