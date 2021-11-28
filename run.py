@@ -539,7 +539,8 @@ def run_bmi(run, h_w_units):
 
 def run_calorie(run, h_w_units):
     """
-    prints the  calorie opening string, gets the height and weight of the user if needed  and returns users calorie value height weight values, age and gender to be reused.
+    prints the  calorie opening string, gets the height and weight of the user if needed  
+    and returns users calorie value height weight values, age and gender to be reused.
     """
     global h_w
     if (run):
