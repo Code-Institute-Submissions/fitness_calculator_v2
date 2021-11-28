@@ -531,6 +531,24 @@ def macro_calculation_start(gender, weight_in_kg):
     return user_macro_msg
 
 
+def run_bmi(run, h_w_units):
+    """
+    calls the bmi opening string, gets the height and weight of the user and returns users bmi and height weight values to be reused
+    """
+    global h_w
+    if (run):
+
+        print_bmi_opener()
+
+        h_w = get_height_and_weight_value(h_w_units[0], h_w_units[1])
+
+        user_bmi_msg = calculate_bmi(h_w[0], h_w[1])
+        gap()
+
+        return user_bmi_msg
+
+
+
 def main():
 
 
