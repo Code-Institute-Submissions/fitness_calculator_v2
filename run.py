@@ -605,8 +605,26 @@ def end_program(*results):
     print("Thank you for using my program. remember these values are only an estimation to be used with your own personal experience.")
 
 
-    
+
 def main():
+
+    global gender
+    global h_w
+    global cals
+
+    opener_dict = opener()
+    h_w_units = opener_dict["h_w_units"]
+
+    final_bmi = run_bmi(opener_dict["bmi"], h_w_units)
+
+    final_cals = run_calorie(
+        opener_dict["calorie"], h_w_units)
+
+    final_macros = run_macro(
+        opener_dict["macro"], h_w_units)
+
+    end_program(final_bmi, final_cals, final_macros)
+
 
 
 main()
