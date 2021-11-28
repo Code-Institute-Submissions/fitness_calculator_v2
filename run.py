@@ -5,6 +5,7 @@ h_w = "run"
 gender = "run"
 cals = "run"
 
+
 def a_or_b(answer, a, b):
     """
     gets option a or b from user.
@@ -143,7 +144,6 @@ def gap():
     print('                                         ')
     print('-----------------------------------------')
     print('                                         ')
-
 
 
 def opener():
@@ -399,7 +399,7 @@ def calorie_calculation_start(height, weight, gender, age):
     return user_cals_msg
 
 
-def macro_calculation_start(gender, weight_in_kg):
+def macro_calculation_start():
     """
     calculates the values of daily intake for protein,carbs and fats using multiple functions to ask the user for values and calculate the % of the total diet each macro should be.
     """
@@ -546,6 +546,7 @@ def run_bmi(run, h_w_units):
 
         return user_bmi_msg
 
+
 def run_calorie(run, h_w_units):
     """
     prints the  calorie opening string, gets the height and weight of the user if needed  and returns users calorie value,height weight values, age and gender to be reused.
@@ -605,7 +606,6 @@ def end_program(*results):
     print("Thank you for using my program. remember these values are only an estimation to be used with your own personal experience.")
 
 
-
 def main():
 
     global gender
@@ -624,7 +624,6 @@ def main():
         opener_dict["macro"], h_w_units)
 
     end_program(final_bmi, final_cals, final_macros)
-
 
 
 main()
