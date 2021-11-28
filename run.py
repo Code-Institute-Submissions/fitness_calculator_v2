@@ -25,10 +25,14 @@ def a_or_b(answer, a, b):
         else:
             print(f"\nPlease respond with {a[0]} or {b[0]}\n")
 
-# yes or no answer function
 def yes_no(answer):
+    """
+    function to get a yes or no answer from the user.
+    defines the acceptable values for yes and no and calls a_or_b using them.
+    """
     yes = ['yes', 'y', 'ye']
     no = ['no', 'n']
+
     return a_or_b(answer, yes, no)
 
 # get an integer from user
