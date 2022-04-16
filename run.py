@@ -9,7 +9,8 @@ cals = "run"
 def a_or_b(answer, a, b):
     """
     gets option a or b from user.
-    checks to see if the input is in the list of acceptable answers for either option.
+    checks to see if the input is in the list of
+    acceptable answers for either option.
     returns True or False if option a or b is picked.
     """
 
@@ -31,8 +32,8 @@ def yes_no(answer):
     function to get a yes or no answer from the user.
     defines the acceptable values for yes and no and calls a_or_b using them.
     """
-    yes = ['yes', 'y', 'ye']
-    no = ['no', 'n']
+    yes = ["yes", "y", "ye"]
+    no = ["no", "n"]
 
     return a_or_b(answer, yes, no)
 
@@ -57,7 +58,9 @@ def get_int_value(answer, low, high):
 
         except ValueError:
             print(
-                f"\ninvalid answer. please respond with a integer in the range {low} to {high}")
+                "\ninvalid answer. please respond with a integer in the range"
+                f" {low} to {high}"
+            )
 
 
 def get_float_value(answer, low, high):
@@ -81,7 +84,9 @@ def get_float_value(answer, low, high):
 
         except ValueError:
             print(
-                f"\ninvalid answer. please respond with a integer in the range {low} to {high}")
+                "\ninvalid answer. please respond with a integer in the range"
+                f" {low} to {high}"
+            )
 
 
 def get_height_and_weight_value(height_units, weight_units):
@@ -93,23 +98,25 @@ def get_height_and_weight_value(height_units, weight_units):
 
     if height_units:
         height_in_ft = get_int_value(
-            "(you will be asked to add inches in the next question) what is your height in ft?: ", 1, 9)
+            "(you will be asked to add inches in the next question) what is"
+            " your height in ft?: ",
+            1,
+            9,
+        )
         height_in_ft_add_inches = get_int_value(
-            "add inches to your current height: ", 0, 12)
+            "add inches to your current height: ", 0, 12
+        )
         height_in_cm = ((height_in_ft * 12) + height_in_ft_add_inches) * 2.54
 
     else:
-        height_in_cm = get_int_value(
-            "what is your height in cm?: ", 25, 275)
+        height_in_cm = get_int_value("what is your height in cm?: ", 25, 275)
 
-    if (weight_units):
-        weight_in_lb = get_int_value(
-            "what is your weight in lb?: ", 40, 600)
+    if weight_units:
+        weight_in_lb = get_int_value("what is your weight in lb?: ", 40, 600)
         weight_in_kg = float(weight_in_lb * 0.45359237)
 
     else:
-        weight_in_kg = get_int_value(
-            "what is your weight in kg?: ", 25, 300)
+        weight_in_kg = get_int_value("what is your weight in kg?: ", 25, 300)
 
     global h_w
     h_w = [height_in_cm, weight_in_kg]
@@ -122,8 +129,11 @@ def get_gender():
     gets a gender value from the user.
     """
     global gender
-    gender = a_or_b("are you male or female?", ["m", "male", "man", "ma", "mal"], [
-        "f", "female", "femal", "fema", "fem", "fe"])
+    gender = a_or_b(
+        "are you male or female?",
+        ["m", "male", "man", "ma", "mal"],
+        ["f", "female", "femal", "fema", "fem", "fe"],
+    )
 
     return gender
 
@@ -141,35 +151,48 @@ def gap():
     """
     prints a line gap.
     """
-    print('                                         ')
-    print('-----------------------------------------')
-    print('                                         ')
+    print("                                         ")
+    print("-----------------------------------------")
+    print("                                         ")
 
 
 def opener():
     """
     opening statement and questions of the program.
-    prints a welcome message and then asks which parts of the program the user would like to use.
-    asks which height and weight units the user would like to input there values in.
+    prints a welcome message and then asks which parts of the program
+    the user would like to use.
+    asks which height and weight units the user would like to input
+    there values in.
     returns answer values in a dict.
     """
     gap()
-    print("Welcome to fitness_calculator. this calculator can be used for bmi,calories,macros and fibre using industry standard calculations.\n")
+    print(
+        "Welcome to fitness_calculator. this calculator can be used for"
+        " bmi,calories,macros and fibre using industry standard"
+        " calculations.\n"
+    )
 
     bmi_bool = yes_no(
-        "would you like to calculate your bmi and healthy weight range?")
+        "would you like to calculate your bmi and healthy weight range?"
+    )
     calorie_bool = yes_no("would you like to calculate your calories?")
     macro_bool = yes_no("would you like to calculate your macros?")
-    weight_units = a_or_b("would you like to use lb or kg for weight measurements?", [
-        "lb", "l"], ["kg", "k"])
-    height_units = a_or_b("would you like to use ft or cm for height measurements?", [
-        "ft", "f"], ["cm", "c"])
+    weight_units = a_or_b(
+        "would you like to use lb or kg for weight measurements?",
+        ["lb", "l"],
+        ["kg", "k"],
+    )
+    height_units = a_or_b(
+        "would you like to use ft or cm for height measurements?",
+        ["ft", "f"],
+        ["cm", "c"],
+    )
 
     opening_answers_dict = {
         "bmi": bmi_bool,
         "calorie": calorie_bool,
         "macro": macro_bool,
-        "h_w_units": [height_units, weight_units]
+        "h_w_units": [height_units, weight_units],
     }
 
     return opening_answers_dict
@@ -178,22 +201,23 @@ def opener():
 def calculate_bmi(weight, height):
     """
     calculates the users bmi from the height and weight values.
-    based on the range of the bmi value returns the category and value to the user.
+    based on the range of the bmi value returns the category
+    and value to the user.
     """
 
     bmi = (weight / height / height) * 1000
     bmi = round(bmi, 1)
 
-    if(bmi <= 16):
+    if bmi <= 16:
         bmi_msg = f"Your bmi is {bmi}. this is considered very underweight\n"
 
-    elif(bmi <= 18.5):
+    elif bmi <= 18.5:
         bmi_msg = f"Your bmi is {bmi}. this is considered underweight\n"
 
-    elif(bmi <= 25):
+    elif bmi <= 25:
         bmi_msg = f"Your bmi is {bmi}. this is considered Healthy\n"
 
-    elif(bmi <= 30):
+    elif bmi <= 30:
         bmi_msg = f"Your bmi is {bmi}. this is considered overweight\n"
 
     else:
@@ -209,17 +233,28 @@ def print_bmi_opener():
     prints the opening statement of the bmi calculator.
     """
     gap()
-    print("This bmi calculator will ask you a few simple questions and return your bmi and healthy weight range\n")
-    print("""this bmi value is not to be taken as an exact science and is only an approxmation of your healthy weight range.
-    if you are concerned about the value you receive consult a medical professional for further steps.\n""")
+    print(
+        "This bmi calculator will ask you a few simple questions and return"
+        " your bmi and healthy weight range\n"
+    )
+    print(
+        """this bmi value is not to be taken as an exact science and is only
+        an approxmation of your healthy weight range.
+    if you are concerned about the value you receive consult a
+    medical professional for further steps.\n"""
+    )
 
 
 def calorie_calculation_start(height, weight, gender, age):
     """
     calorie calculation function.
-    contains functions to calculate bmr,maintenance calories, and surplus/deficit percentage.
-    contains functions to get user activity level, user  goals and triaining experience.
-    returns recommended calories from the last calorie calculation function which takes the user values from the prior functions.
+    contains functions to calculate bmr,maintenance calories,
+    and surplus/deficit percentage.
+    contains functions to get user activity level,
+     user  goals and triaining experience.
+    returns recommended calories from
+    the last calorie calculation function which takes
+    the user values from the prior functions.
     """
 
     def calculate_bmr(height, weight, gender, age):
@@ -234,7 +269,10 @@ def calorie_calculation_start(height, weight, gender, age):
 
         gap()
         print(
-            f"your BMR (basal metabolic rate) is {round(bmr)}\n this is an approximation of how many calories your body burns without any additional energy expenditure apart from breathing.")
+            f"your BMR (basal metabolic rate) is {round(bmr)}\n this is an"
+            " approximation of how many calories your body burns without any"
+            " additional energy expenditure apart from breathing."
+        )
 
         return bmr
 
@@ -244,50 +282,71 @@ def calorie_calculation_start(height, weight, gender, age):
         gets the users activity levels.
         """
         gap()
-        table = [["Sedentary + Training 3-6x/wk", "1.2 - 1.5"],
-                 ["Lightly Active + Training 3-6x/wk", "1.5 - 1.8"],
-                 ["Moderately Active + Training 3-6x/wk", "1.8 - 2.0"],
-                 ["Highly Active + Training 3-6x/wk", "2.0 - 2.2"]]
+        table = [
+            ["Sedentary + Training 3-6x/wk", "1.2 - 1.5"],
+            ["Lightly Active + Training 3-6x/wk", "1.5 - 1.8"],
+            ["Moderately Active + Training 3-6x/wk", "1.8 - 2.0"],
+            ["Highly Active + Training 3-6x/wk", "2.0 - 2.2"],
+        ]
 
-        print(tabulate(table, headers=[
-              "LIFESTYLE & TRAINING FREQUENCY", "ACTIVITY MULTIPLIER"]))
+        print(
+            tabulate(
+                table,
+                headers=[
+                    "LIFESTYLE & TRAINING FREQUENCY",
+                    "ACTIVITY MULTIPLIER",
+                ],
+            )
+        )
 
         activity_level = get_float_value(
-            "what is your estimated activity level multiplier?: ", 1, 2)
+            "what is your estimated activity level multiplier?: ", 1, 2
+        )
 
         return activity_level
 
     def calculate_maintenance(bmr, activity_level):
         """
-        calculates the users maintenance calories from  bmr and activity level.
+        calculates the users maintenance calories from
+        bmr and activity level.
         """
 
         maintenance_calories = bmr * activity_level
         gap()
         print(
-            f"your calculated  daily calories to maintain your current weight is {round(maintenance_calories)}")
+            "your calculated  daily calories to maintain your current weight"
+            f" is {round(maintenance_calories)}"
+        )
 
         return maintenance_calories
 
     def get_training_experience():
-        """"
+        """ "
         gets the users training experience in an int value.
         """
         gap()
-        table = [["Beginner(0-2 years))", "1"],
-                 ["Intermediate(2-4 years)", "2"], ["Advanced(4+ years)", "3"]]
+        table = [
+            ["Beginner(0-2 years))", "1"],
+            ["Intermediate(2-4 years)", "2"],
+            ["Advanced(4+ years)", "3"],
+        ]
         print(tabulate(table))
         training_experience = get_int_value(
-            "what is your level of training experience?: ", 1, 3)
+            "what is your level of training experience?: ", 1, 3
+        )
 
         return training_experience
 
     def get_user_goal():
         """
-        gets the users goal (lose weight, gain weight or maintain) in an int value.
+        gets the users goal (lose weight, gain weight or maintain)
+         in an int value.
         """
-        table = [["Lose Weight(Cut)", "1"], ["Maintain current weight", "2"], [
-            "Gain Weight(Bulk)", "3"]]
+        table = [
+            ["Lose Weight(Cut)", "1"],
+            ["Maintain current weight", "2"],
+            ["Gain Weight(Bulk)", "3"],
+        ]
         print(tabulate(table))
         user_goal = get_int_value("what is your goal?: ", 1, 3)
 
@@ -296,14 +355,18 @@ def calorie_calculation_start(height, weight, gender, age):
     def deficit_percentage_calculation(maintenance_calories):
         """
         calculates the percentage calorie deficit.
-        ask the user if they want to use the suggested value or adjust it themselves.
+        ask the user if they want to use the suggested value or adjust
+        it themselves.
         """
         change_cals_percentage = yes_no(
-            """the default calorie deficit is 20% below maintenance. We redomend this value for most people unless your are an experienced lifter with an already low body fat %. would you like to change this percentage?\n""")
+            """the default calorie deficit is 20% below maintenance.
+             We redomend this value for most people unless
+             your are an experienced lifter with an already
+             low body fat %. would you like to change this percentage?\n"""
+        )
 
         if change_cals_percentage:
-            defecit = get_int_value(
-                "enter your preferred deficit %: ", 0, 75)
+            defecit = get_int_value("enter your preferred deficit %: ", 0, 75)
         else:
             defecit = 20
 
@@ -311,37 +374,57 @@ def calorie_calculation_start(height, weight, gender, age):
 
         return defecit_cals
 
-    def surplus_percentage_calculation(training_experience, maintenance_calories):
+    def surplus_percentage_calculation(
+        training_experience, maintenance_calories
+    ):
         """
-        calculates the percentage calorie surplus. ask the user if they want to use the suggested value based on training experience or adjust it themselves.
+        calculates the percentage calorie surplus. ask the user if
+         they want to use the suggested value based
+         on training experience or adjust it themselves.
         """
         if training_experience == 1:
             change_cals_percentage = yes_no(
-                """the recomended calorie surplus for your experience level is 25% to maximise muscle building potential in your early trainging career. would you like to change this percentage?""")
+                """the recomended calorie surplus
+                 for your experience level is 25%
+                 to maximise muscle building potential in
+                 your early trainging career. would you like to
+                 change this percentage?"""
+            )
 
             if change_cals_percentage:
                 surplus = get_int_value(
-                    "enter your preferred surplus %: ", 0, 75)
+                    "enter your preferred surplus %: ", 0, 75
+                )
             else:
                 surplus = 25
 
         if training_experience == 2:
             change_cals_percentage = yes_no(
-                """the recomended calorie surplus for your experience level is 20% to maximise muscle building potential. would you like to change this percentage?""")
+                """the recomended calorie surplus for your
+                experience level is 20% to maximise
+                muscle building potential. would you like
+                to change this percentage?"""
+            )
 
             if change_cals_percentage:
                 surplus = get_int_value(
-                    "enter your preferred surplus %: ", 0, 75)
+                    "enter your preferred surplus %: ", 0, 75
+                )
             else:
                 surplus = 20
 
         else:
             change_cals_percentage = yes_no(
-                """the recomended calorie surplus for your experience level is 15% to maximise muscle building potential. would you like to change this percentage?""")
+                """the recomended calorie surplus
+                for your experience level is 15% to maximise
+                muscle building potential. would you like to
+                change this percentage?"""
+            )
 
             if change_cals_percentage:
                 surplus = get_int_value(
-                    "enter your preferred surplus %: ", 0, 75)
+                    "enter your preferred surplus %: ", 0, 75
+                )
 
             else:
                 surplus = 15
@@ -358,7 +441,8 @@ def calorie_calculation_start(height, weight, gender, age):
 
         if user_goal == 1:
             defecit_calories = deficit_percentage_calculation(
-                maintenance_calories)
+                maintenance_calories
+            )
             calories = maintenance_calories - defecit_calories
 
         elif user_goal == 2:
@@ -367,7 +451,8 @@ def calorie_calculation_start(height, weight, gender, age):
 
         else:
             surplus_calories = surplus_percentage_calculation(
-                training_exp, maintenance_calories)
+                training_exp, maintenance_calories
+            )
             calories = maintenance_calories + surplus_calories
 
         return calories
@@ -387,7 +472,7 @@ def calorie_calculation_start(height, weight, gender, age):
 
     cals = calculate_cals(user_goal, maintenance_calories, training_exp)
 
-    user_cals_msg = f"your recomended daily caloric intake is {round(cals)}cal"
+    user_cals_msg = f"your recomended daily caloric intake is {round(cals)}"
 
     gap()
     print(user_cals_msg)
@@ -397,18 +482,25 @@ def calorie_calculation_start(height, weight, gender, age):
 
 def macro_calculation_start():
     """
-    calculates the values of daily intake for protein,carbs and fats using multiple functions to ask the user for values and calculate the % of the total diet each macro should be.
+    calculates the values of daily intake for
+    protein,carbs and fats using multiple functions to ask
+    the user for values and calculate the % of the total diet
+     each macro should be.
     """
 
     def get_bodyfat_percentage():
         """
         gets the user to input rough bodyfat percentage in int form.
         """
-        print("""please enter your bodyfat percentage. this does not have to be exact and an estimation will do.
-        """)
+        print(
+            """please enter your bodyfat percentage.
+             this does not have to be exact and an estimation will do.
+        """
+        )
 
         bodyfat_percentage = get_int_value(
-            "please enter your bodyfat percentage: ", 4, 60)
+            "please enter your bodyfat percentage: ", 4, 60
+        )
 
         return bodyfat_percentage
 
@@ -426,7 +518,9 @@ def macro_calculation_start():
 
     def calculate_protein(bf, lbm):
         """
-        calculates daily protein intake. takes bf, lbm and gender and determines what protein percentage of total cals should be applied.
+        calculates daily protein intake. takes bf, lbm and
+        gender and determines what protein percentage of total
+        cals should be applied.
         """
         protein_multiplier = 1.6
         global gender
@@ -458,7 +552,8 @@ def macro_calculation_start():
 
     def calculate_fat(bf):
         """
-        calculates daily fat intake. takes bf and determines what fat percentage of total cals should be applied.
+        calculates daily fat intake. takes bf and determines
+        what fat percentage of total cals should be applied.
         """
 
         global gender
@@ -493,7 +588,8 @@ def macro_calculation_start():
 
     def calculate_carbs(daily_protein, daily_fats):
         """
-        calculates carbs by subtracting protein/fat cals from total cals carbs is remainder
+        calculates carbs by subtracting protein/fat cals
+        from total cals carbs is remainder
         """
         global cals
         remaining_cals = cals - ((daily_protein * 4) + (daily_fats * 9))
@@ -513,7 +609,10 @@ def macro_calculation_start():
 
     daily_carbs = calculate_carbs(daily_protein, daily_fats)
 
-    macros = f"{round(daily_protein)}G protein {round(daily_fats)}G Fat {round(daily_carbs)}G Carbs"
+    macros = (
+        f"{round(daily_protein)}G protein {round(daily_fats)}G Fat"
+        f" {round(daily_carbs)}G Carbs"
+    )
     user_macro_msg = f"your daily macro intake is {macros}"
     gap()
     print(user_macro_msg)
@@ -524,10 +623,12 @@ def macro_calculation_start():
 
 def run_bmi(run, h_w_units):
     """
-    calls the bmi opening string, gets the height and weight of the user and returns users bmi and height weight values to be reused
+    calls the bmi opening string, gets the height and weight
+    of the user and returns users bmi and height weight values
+    to be reused
     """
     global h_w
-    if (run):
+    if run:
 
         print_bmi_opener()
 
@@ -541,13 +642,18 @@ def run_bmi(run, h_w_units):
 
 def run_calorie(run, h_w_units):
     """
-    prints the  calorie opening string, gets the height and weight of the user if needed  
-    and returns users calorie value height weight values, age and gender to be reused.
+    prints the  calorie opening string, gets the height
+    and weight of the user if needed
+    and returns users calorie value height weight values,
+    age and gender to be reused.
     """
     global h_w
-    if (run):
+    if run:
 
-        print("this calorie calculator will ask you a few simple questions and return your recomended daily calorie intake.\n")
+        print(
+            "this calorie calculator will ask you a few simple questions and"
+            " return your recomended daily calorie intake.\n"
+        )
 
         if h_w == "run":
             h_w = get_height_and_weight_value(h_w_units[0], h_w_units[1])
@@ -569,9 +675,12 @@ def run_macro(run, h_w_units):
     global gender
     global cals
     global h_w
-    if (run):
+    if run:
 
-        print("this macro calculator will ask you a few simple questions and return your recomended daily macro intake.\n")
+        print(
+            "this macro calculator will ask you a few simple questions and"
+            " return your recomended daily macro intake.\n"
+        )
 
         if gender == "run":
             gender = get_gender()
@@ -581,7 +690,8 @@ def run_macro(run, h_w_units):
 
         if cals == "run":
             cals = get_int_value(
-                "what is your daily calorie intake?: ", 1000, 8000)
+                "what is your daily calorie intake?: ", 1000, 8000
+            )
 
         user_macro_msg = macro_calculation_start()
         gap()
@@ -596,7 +706,10 @@ def end_program(*results):
         print(result)
 
         gap()
-    print("Thank you for using my program. remember these values are only an estimation to be used with your own personal experience.")
+    print(
+        "Thank you for using my program. remember these values are only an"
+        " estimation to be used with your own personal experience."
+    )
 
 
 def main():
@@ -610,11 +723,9 @@ def main():
 
     final_bmi = run_bmi(opener_dict["bmi"], h_w_units)
 
-    final_cals = run_calorie(
-        opener_dict["calorie"], h_w_units)
+    final_cals = run_calorie(opener_dict["calorie"], h_w_units)
 
-    final_macros = run_macro(
-        opener_dict["macro"], h_w_units)
+    final_macros = run_macro(opener_dict["macro"], h_w_units)
 
     end_program(final_bmi, final_cals, final_macros)
 

@@ -25,4 +25,9 @@
   },
   "python.formatting.provider": "black",
   "editor.quickSuggestionsDelay": 250,
+  "python.formatting.blackArgs": [
+    "--line-length=79",
+    "--experimental-string-processing"
+  ],
+  "files.trimTrailingWhitespace": true,
 }
