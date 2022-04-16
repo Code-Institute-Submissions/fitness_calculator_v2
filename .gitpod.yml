@@ -7,7 +7,8 @@ tasks:
 vscode:
   extensions:
     - ms-python.python
+    - ms-python.vscode-pylance
     - formulahendry.auto-close-tag
-    - eventyret.bootstrap-4-cdn-snippet
-    - hookyqr.beautify
-    - matt-rudge.auto-open-preview-panel
+    - ms-toolsai.jupyter
+    - esbenp.prettier-vscode
+    - ecmel.vscode-html-css
