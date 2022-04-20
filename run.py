@@ -1,4 +1,4 @@
-from tabulate import TableFormat, tabulate
+from tabulate import tabulate
 
 # global variables
 h_w = "run"
@@ -6,7 +6,7 @@ gender = "run"
 cals = "run"
 
 
-def a_or_b(answer, a, b):
+def a_or_b(question, a, b):
     """
     gets option a or b from user.
     checks to see if the input is in the list of
@@ -15,7 +15,7 @@ def a_or_b(answer, a, b):
     """
 
     while True:
-        choice = input(f"\n{answer} {a[0]} / {b[0]}: \n").lower()
+        choice = input(f"\n{question} {a[0]} / {b[0]}: \n").lower()
 
         if choice in a:
             return True
@@ -27,7 +27,7 @@ def a_or_b(answer, a, b):
             print(f"\nPlease respond with {a[0]} or {b[0]}\n")
 
 
-def yes_no(answer):
+def yes_no(question):
     """
     function to get a yes or no answer from the user.
     defines the acceptable values for yes and no and calls a_or_b using them.
@@ -35,10 +35,10 @@ def yes_no(answer):
     yes = ["yes", "y", "ye"]
     no = ["no", "n"]
 
-    return a_or_b(answer, yes, no)
+    return a_or_b(question, yes, no)
 
 
-def get_int_value(answer, low, high):
+def get_int_value(question, low, high):
     """
     gets an int value input from the user within a defined low and high range.
     """
@@ -46,7 +46,7 @@ def get_int_value(answer, low, high):
     while True:
 
         try:
-            input_int = int(input(f"\n{answer}\n"))
+            input_int = int(input(f"\n{question}\n"))
 
             if input_int in range(low, high + 1):
 
@@ -63,7 +63,7 @@ def get_int_value(answer, low, high):
             )
 
 
-def get_float_value(answer, low, high):
+def get_float_value(question, low, high):
     """
     gets a float value input from the user within a defined low and high range.
     """
@@ -71,7 +71,7 @@ def get_float_value(answer, low, high):
     while True:
 
         try:
-            input_float = float(input(f"\n{answer}\n"))
+            input_float = float(input(f"\n{question}\n"))
             float_to_int = int(input_float * 10)
 
             if float_to_int in range(low * 10, high * 10 + 1):
