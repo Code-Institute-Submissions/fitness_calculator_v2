@@ -1,7 +1,6 @@
 {
   "python.linting.pylintEnabled": false,
   "python.linting.enabled": true,
-  "python.terminal.activateEnvironment": false,
   "files.exclude": {
     "**/.DS_Store": true,
     "**/.git": true,
@@ -17,7 +16,7 @@
   },
   "files.autoSave": "onFocusChange",
   "editor.wordWrap": "on",
-  "workbench.colorTheme": "Community Material Theme Lighter",
+  "workbench.colorTheme": "Community Material Theme Darker",
   "terminal.integrated.gpuAcceleration": "canvas",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[python]": {
@@ -30,5 +29,6 @@
     "--experimental-string-processing"
   ],
   "files.trimTrailingWhitespace": true,
-  "python.linting.flake8Enabled": true
+  "python.linting.flake8Enabled": true,
+  "editor.formatOnSave": true
 }

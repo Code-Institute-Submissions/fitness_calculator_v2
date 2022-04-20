@@ -51,12 +51,11 @@ def get_int_value(question, low, high):
             if input_int in range(low, high + 1):
 
                 return input_int
-
             else:
-
-                return ValueError
-
-        except ValueError:
+                print(
+                    f"\nPlease respond with a value between {low} & {high}\n"
+                )
+        except Exception:
             print(
                 "\ninvalid answer. please respond with a integer in the range"
                 f" {low} to {high}"
@@ -72,17 +71,38 @@ def get_float_value(question, low, high):
 
         try:
             input_float = float(input(f"\n{question}\n"))
-            float_to_int = int(input_float * 10)
 
-            if float_to_int in range(low * 10, high * 10 + 1):
-
+            if input_float in [
+                1.0,
+                1.1,
+                1.2,
+                1.3,
+                1.4,
+                1.5,
+                1.6,
+                1.7,
+                1.8,
+                1.9,
+                2.0,
+                2.1,
+                2.2,
+                2.3,
+                2.4,
+                2.5,
+                2.6,
+                2.7,
+                2.8,
+                2.9,
+                3.0,
+            ]:
                 return input_float
 
             else:
+                print(
+                    f"\nPlease respond with a value between {low} & {high}\n"
+                )
 
-                return ValueError
-
-        except ValueError:
+        except Exception:
             print(
                 "\ninvalid answer. please respond with a integer in the range"
                 f" {low} to {high}"
@@ -300,7 +320,7 @@ def calorie_calculation_start(height, weight, gender, age):
         )
 
         activity_level = get_float_value(
-            "what is your estimated activity level multiplier?: ", 1, 2
+            "what is your estimated activity level multiplier?: ", 1.0, 3.0
         )
 
         return activity_level
