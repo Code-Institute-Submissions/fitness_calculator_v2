@@ -205,7 +205,7 @@ def calculate_bmi(weight, height):
     and value to the user.
     """
 
-    bmi = (weight / height / height) * 1000
+    bmi = (weight / height / height) * 10000
     bmi = round(bmi, 1)
 
     if bmi <= 16:

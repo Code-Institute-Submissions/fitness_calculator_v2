@@ -1,5 +1,5 @@
 {
-   "python.linting.pylintEnabled": true,
+  "python.linting.pylintEnabled": false,
   "python.linting.enabled": true,
   "python.terminal.activateEnvironment": false,
   "files.exclude": {
@@ -15,9 +15,9 @@
     "**/core.python*": true,
     "**/CVS": true
   },
-   "files.autoSave": "onFocusChange",
+  "files.autoSave": "onFocusChange",
   "editor.wordWrap": "on",
-  "workbench.colorTheme": "Community Material Theme Darker",
+  "workbench.colorTheme": "Community Material Theme Lighter",
   "terminal.integrated.gpuAcceleration": "canvas",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[python]": {
@@ -30,4 +30,5 @@
     "--experimental-string-processing"
   ],
   "files.trimTrailingWhitespace": true,
+  "python.linting.flake8Enabled": true
 }
