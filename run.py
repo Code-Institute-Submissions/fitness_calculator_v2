@@ -182,7 +182,7 @@ def opener():
     print(
         "Welcome to fitness_calculator. this calculator can be used for"
         " bmi,calories,macros and fibre using industry standard"
-        " calculations.\n"
+        " calculations\n"
     )
 
     bmi_bool = yes_no(
@@ -252,10 +252,10 @@ def print_bmi_opener():
         " your bmi and healthy weight range\n"
     )
     print(
-        """this bmi value is not to be taken as an exact science and is only
-        an approxmation of your healthy weight range.
-    if you are concerned about the value you receive consult a
-    medical professional for further steps.\n"""
+        "this bmi value is not to be taken as an exact science and is only"
+        " an approxmation of your healthy weight range."
+        " if you are concerned about the value you receive consult a"
+        " medical professional for further steps.\n"
     )
 
 
@@ -373,10 +373,10 @@ def calorie_calculation_start(height, weight, gender, age):
         it themselves.
         """
         change_cals_percentage = yes_no(
-            """the default calorie deficit is 20% below maintenance.
-             We redomend this value for most people unless
-             your are an experienced lifter with an already
-             low body fat %. would you like to change this percentage?\n"""
+            "the default calorie deficit is 20% below maintenance."
+            " We recomend this value for most people unless"
+            " your are an experienced lifter with an already"
+            " low body fat %. would you like to change this percentage?\n"
         )
 
         if change_cals_percentage:
@@ -398,11 +398,11 @@ def calorie_calculation_start(height, weight, gender, age):
         """
         if training_experience == 1:
             change_cals_percentage = yes_no(
-                """the recomended calorie surplus
-                 for your experience level is 25%
-                 to maximise muscle building potential in
-                 your early trainging career. would you like to
-                 change this percentage?"""
+                "the recomended calorie surplus"
+                "for your experience level is 25%"
+                "to maximise muscle building potential in"
+                "your early trainging career. would you like to"
+                "change this percentage?"
             )
 
             if change_cals_percentage:
@@ -414,10 +414,10 @@ def calorie_calculation_start(height, weight, gender, age):
 
         if training_experience == 2:
             change_cals_percentage = yes_no(
-                """the recomended calorie surplus for your
-                experience level is 20% to maximise
-                muscle building potential. would you like
-                to change this percentage?"""
+                "the recomended calorie surplus for your"
+                "experience level is 20% to maximise"
+                "muscle building potential. would you like"
+                "to change this percentage?"
             )
 
             if change_cals_percentage:
@@ -429,10 +429,10 @@ def calorie_calculation_start(height, weight, gender, age):
 
         else:
             change_cals_percentage = yes_no(
-                """the recomended calorie surplus
-                for your experience level is 15% to maximise
-                muscle building potential. would you like to
-                change this percentage?"""
+                "the recomended calorie surplus"
+                "for your experience level is 15% to maximise"
+                "muscle building potential. would you like to"
+                "change this percentage?"
             )
 
             if change_cals_percentage:
@@ -507,9 +507,8 @@ def macro_calculation_start():
         gets the user to input rough bodyfat percentage in int form.
         """
         print(
-            """please enter your bodyfat percentage.
-             this does not have to be exact and an estimation will do.
-        """
+            "please enter your bodyfat percentage.\n"
+            "this does not have to be exact and an estimation will do."
         )
 
         bodyfat_percentage = get_int_value(
