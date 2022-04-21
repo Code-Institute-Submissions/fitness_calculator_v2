@@ -117,17 +117,10 @@ def get_height_and_weight_value(height_units, weight_units):
     """
 
     if height_units:
-        height_in_ft = get_int_value(
-            "(you will be asked to add inches in the next question) what is"
-            " your height in ft?: ",
-            1,
-            9,
-        )
-        height_in_ft_add_inches = get_int_value(
-            "add inches to your current height: ", 0, 12
-        )
-        height_in_cm = ((height_in_ft * 12) + height_in_ft_add_inches) * 2.54
-
+        height_in_ft = get_int_value("feet:", 1, 9)
+        height_in_inches = get_int_value("inches:", 0, 12)
+        height_in_inches += height_in_ft * 12
+        height_in_cm = round(height_in_inches * 2.54, 1)
     else:
         height_in_cm = get_int_value("what is your height in cm?: ", 25, 275)
 
@@ -140,7 +133,7 @@ def get_height_and_weight_value(height_units, weight_units):
 
     global h_w
     h_w = [height_in_cm, weight_in_kg]
-
+    print(h_w)
     return h_w
 
 
@@ -218,14 +211,15 @@ def opener():
     return opening_answers_dict
 
 
-def calculate_bmi(weight, height):
+def calculate_bmi(height, weight):
     """
     calculates the users bmi from the height and weight values.
     based on the range of the bmi value returns the category
     and value to the user.
     """
-
-    bmi = (weight / height / height) * 10000
+    height /= 100
+    bmi = weight / (height * height)
+    print(bmi)
     bmi = round(bmi, 1)
 
     if bmi <= 16:
